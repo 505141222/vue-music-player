@@ -149,13 +149,11 @@
         }
         // 当滚动到底部，且-newY大于最后一个元素的上限
         this.currentIndex = listHeight.length - 2
-        console.log(this.currentIndex)
       },
       diff(newVal) {
-        console.log('newVal',newVal)
         let fixedTop = (newVal > 0 && newVal < TITLE_HEIGHT) ? newVal - TITLE_HEIGHT : 0
         if (this.fixedTop === fixedTop) {
-          return console.log('fixedTop',fixedTop)
+          return
         }
         this.fixedTop = fixedTop
         this.$refs.fixed.style.transform = `translate3d(0,${fixedTop}px,0)`

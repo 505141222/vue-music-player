@@ -8,7 +8,7 @@
         <div class="recommend-list">
           <h1 class="list-title">热门歌单推荐</h1>
           <ul>
-            <li class="item" v-for='item in listData'>
+            <li @click="selectItem(item)" class="item" v-for='item in listData'>
               <div class="icon">
                 <img width="60" height="60" @load="loadImage" v-lazy='item.imgurl'>
               </div>
@@ -34,7 +34,11 @@ import {getRecommend,getDiscList} from '../../api/recommend.js'
 import {ERR_OK} from 'api/config'
 import Slider from '../../components/slide/slide.vue'
 import Loading from '../../base/loading/loading.vue'
+import {playlistMixin} from 'common/js/mixin'
+import {mapMutations} from 'vuex'
+
 export default {
+  mixins: [playlistMixin],
   components: {
     Slider,
     Scroll,
@@ -51,6 +55,17 @@ export default {
     this._getDiscList()
   },
   methods: {
+    handlePlaylist(playlist) {
+      const bottom = playlist.length > 0 ? '60px' : ''
+      this.$refs.recommend.style.bottom = bottom
+      this.$refs.scroll.refresh()
+    },
+    selectItem(item) {
+        this.$router.push({
+          path: `/recommend/${item.dissid}`
+        })
+        this.setDisc(item)
+      },
     _getRecommend() {
       getRecommend().then((res) => {
         if (res.code === ERR_OK) {
@@ -71,6 +86,9 @@ export default {
           this.$refs.scroll.refresh()
         }
       },
+      ...mapMutations({
+        setDisc: 'SET_DISC'
+      })
   }
 }
 </script>

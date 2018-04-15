@@ -16,7 +16,7 @@
     <div class="bg-layer" ref="layer"></div>
     <scorll :data='songs' class="list" ref='list' :probe-type='probeType' :listen-scroll='listenScroll' @scroll='scroll'>
       <div class="song-list-wrapper">
-        <song-list :songs='songs' @select='selectItem'></song-list>
+        <song-list :songs='songs' @select='selectItem' :rank="rank"></song-list>
       </div>
     </scorll>
     <div v-show="!songs.length" class="loading-container">
@@ -31,12 +31,15 @@ import SongList from 'base/song-list/song-list'
 import {prefixStyle} from 'common/js/dom'
 import Loading from '../../../../base/loading/loading.vue'
 import {mapActions} from 'vuex'
+import {playlistMixin} from '../../../../common/js/mixin.js'
+import {eventBus} from '../../../../eventBus.js'
 
 const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')
 const backdrop = prefixStyle('backdrop-filter')
 
 export default {
+  mixins:[playlistMixin],
   components: {
     Scorll,
     SongList,
@@ -63,7 +66,11 @@ export default {
     bgImage: {
       type:String,
       default:''
-    }
+    },
+    rank: {
+      type: Boolean,
+      default: false
+      }
   },
   computed: {
     bgStyle() {
@@ -71,6 +78,11 @@ export default {
     }
   },
   methods: {
+    handlePlaylist(playlist) {
+      const bottom = playlist.length > 0 ? '60px' : ''
+      this.$refs.list.$el.style.bottom = bottom
+      this.$refs.list.refresh()
+    },
     scroll(pos) {
       this.scrollY = pos.y
     },
@@ -87,8 +99,9 @@ export default {
     selectItem(item,index) {
       this.selectPlay({
         list:this.songs,
-        index
+        index,
       })
+      eventBus.$emit('on-select')
     },
     ...mapActions([
       'selectPlay',
@@ -130,6 +143,7 @@ export default {
     this.imgHeight = this.$refs.bgImage.clientHeight
     this.minTranslateHeight = -this.imgHeight+RESERVED_HEIGHT
     this.$refs.list.$el.style.top =this.imgHeight+'px'
+    console.log(this.singer)
   }
 }
 </script>
