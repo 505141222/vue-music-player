@@ -33,7 +33,7 @@ export const playerMixin = {
     },
     ...mapGetters([
       'sequenceList',
-      'playlist',
+      'playList',
       'currentSong',
       'mode',
       'favoriteList'
@@ -81,7 +81,7 @@ export const playerMixin = {
       setPlayMode: 'SET_PLAY_MODE',
       setPlaylist: 'SET_PLAYLIST',
       setCurrentIndex: 'SET_CURRENT_INDEX',
-      setPlayingState: 'SET_PLAYING_STATE'
+      setPlaying: 'SET_PLAYING_STATE'
     }),
     ...mapActions([
       'saveFavoriteList',
@@ -111,6 +111,9 @@ export const searchMixin = {
     },
     addQuery(query) {
       this.$refs.searchBox.setQuery(query)
+    },
+    focusInput() {
+      this.$refs.searchBox.focus()
     },
     saveSearch() {
       this.saveSearchHistory(this.query)

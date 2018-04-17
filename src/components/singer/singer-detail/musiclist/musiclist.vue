@@ -82,19 +82,21 @@ export default {
       const bottom = playlist.length > 0 ? '60px' : ''
       this.$refs.list.$el.style.bottom = bottom
       this.$refs.list.refresh()
+
     },
     scroll(pos) {
       this.scrollY = pos.y
     },
     back() {
-      this.$router.push({
-        path:`/singer`
-      })
+      this.$router.back()
     },
     randomListPlay() {
       this.randomPlay({
         list: this.songs
       })
+      setTimeout(()=>{
+        eventBus.$emit('on-select')
+      },20)
     },
     selectItem(item,index) {
       this.selectPlay({
@@ -142,9 +144,7 @@ export default {
   mounted() {
     this.imgHeight = this.$refs.bgImage.clientHeight
     this.minTranslateHeight = -this.imgHeight+RESERVED_HEIGHT
-    this.$refs.list.$el.style.top =this.imgHeight+'px'
-    console.log(this.singer)
-  }
+    this.$refs.list.$el.style.top =this.imgHeight+'px'  }
 }
 </script>
 

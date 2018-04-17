@@ -10,6 +10,7 @@
   import {addClass} from 'common/js/dom'
   import BScroll from 'better-scroll'
   import {mapGetters} from 'vuex'
+  import {eventBus} from '../../../eventBus.js'
 
   export default {
     name: 'slider',
@@ -22,14 +23,15 @@
     computed: {
       ...mapGetters([
         'currentIndex',
+        'currentSong',
         'playList'
       ])
     },
     watch: {
       currentIndex(newval){
         setTimeout(() => {
-        this._playTo(newval)
-      }, 20)
+          this._playTo(newval)
+        }, 20)
       }
     },
     mounted() {
@@ -43,6 +45,11 @@
           return
         }
         this.slider.refresh()
+      })
+
+      eventBus.$on('on-select',()=>{
+        this.slider.refresh()
+        this._playTo(this.currentIndex)
       })
     },
     methods: {
@@ -71,22 +78,29 @@
           scrollY: false,
           momentum: false,
           snap: {
-            loop: true,
+            loop: false,
             threshold: 0.3,
             speed: 400
-          }
+          },
+          click:true
         })
         this._playTo(this.currentIndex)
         this.slider.on('scrollEnd', () => {
           let pageIndex = this.slider.getCurrentPage().pageX
-          if(pageIndex == this.currentIndex - 1) {
+
+          if (pageIndex > this.playList.length - 1) {
+            console.log('>')
+            this.$emit('songNext')
+            this._playTo(0)
+            return
+          }else if(pageIndex == this.currentIndex - 1) {
             this.$emit('songPrev')
+            console.log('=-1')
+            return
           }else if(pageIndex == this.currentIndex + 1){
+            console.log('=+1')
             this.$emit('songNext')
-          }else if (pageIndex >= this.playList.length - 1) {
-            this.$emit('songPrev')
-          }else{
-            this.$emit('songNext')
+            return
           }
         })
         this.slider.on('beforeScrollStart', () => {
