@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import Scroll from '../../base/scroll/scroll.vue'
-import {getRecommend,getDiscList} from '../../api/recommend.js'
+import Scroll from 'base/scroll/scroll.vue'
+import {getRecommend,getDiscList} from 'api/recommend.js'
 import {ERR_OK} from 'api/config'
-import Slider from '../../components/slide/slide.vue'
-import Loading from '../../base/loading/loading.vue'
+import Slider from '../components/slide/slide.vue'
+import Loading from 'base/loading/loading.vue'
 import {playlistMixin} from 'common/js/mixin'
 import {mapMutations} from 'vuex'
 

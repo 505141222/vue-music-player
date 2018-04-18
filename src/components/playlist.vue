@@ -41,11 +41,11 @@
 
 <script type="text/ecmascript-6">
   import {mapActions} from 'vuex'
-  import Scroll from '../../../base/scroll/scroll.vue'
+  import Scroll from 'base/scroll/scroll.vue'
   import {playMode} from 'common/js/config'
-  import Confirm from '../../../base/confirm/confirm.vue'
-  import {playerMixin} from '../../../common/js/mixin.js'
-  import AddSong from './add-song/add-song.vue'
+  import Confirm from 'base/confirm/confirm.vue'
+  import {playerMixin} from 'common/js/mixin.js'
+  import AddSong from './add-song.vue'
 
   export default {
     mixins:[playerMixin],

@@ -45,16 +45,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import SearchBox from '../../../../base/search-box/search-box.vue'
-  import {searchMixin} from '../../../../common/js/mixin.js'
-  import SearchSuggert from '../../../search/serach-suggest/search-suggest.vue'
-  import Switches from '../../../../base/switches/switches.vue'
-  import Scroll from '../../../../base/scroll/scroll.vue'
+  import SearchBox from 'base/search-box/search-box.vue'
+  import {searchMixin} from 'common/js/mixin.js'
+  import SearchSuggert from './search-suggest.vue'
+  import Switches from 'base/switches/switches.vue'
+  import Scroll from 'base/scroll/scroll.vue'
   import {mapGetters,mapActions} from 'vuex'
-  import SongList from '../../../../base/song-list/song-list.vue'
+  import SongList from 'base/song-list/song-list.vue'
   import Song from 'common/js/song'
-  import SearchList from '../../../../base/search-list/search-list.vue'
-  import TopTip from '../../../../base/top-tip/top-tip.vue'
+  import SearchList from 'base/search-list/search-list.vue'
+  import TopTip from 'base/top-tip/top-tip.vue'
 
   export default {
     mixins:[searchMixin],

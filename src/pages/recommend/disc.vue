@@ -1,12 +1,12 @@
 <template>
   <transition name="slide">
-    <music-list :rank="rank" :title="title" :bg-image="bgImage" :songs="songs"></music-list>
+    <music-list :title="title" :bg-image="bgImage" :songs="songs"></music-list>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
-  import MusicList from '../../singer/singer-detail/musiclist/musiclist.vue'
-  import {getMusicList} from 'api/rank'
+  import MusicList from '../../components/musiclist.vue'
+  import {getSongList} from 'api/recommend'
   import {ERR_OK} from 'api/config'
   import {mapGetters} from 'vuex'
   import {createSong} from 'common/js/song'
@@ -14,43 +14,40 @@
   export default {
     computed: {
       title() {
-        return this.topList.topTitle
+        return this.disc.dissname
       },
       bgImage() {
-        if (this.songs.length) {
-          return this.songs[0].image
-        }
-        return ''
+        return this.disc.imgurl
       },
       ...mapGetters([
-        'topList'
+        'disc'
       ])
     },
     data() {
       return {
-        songs: [],
-        rank: true
+        songs: []
       }
     },
     created() {
-      this._getMusicList()
+      this._getSongList()
     },
     methods: {
-      _getMusicList() {
-        if (!this.topList.id) {
-          this.$router.push('/rank')
+      _getSongList() {
+        if (!this.disc.dissid) {
+          this.$router.push('/recommend')
           return
         }
-        getMusicList(this.topList.id).then((res) => {
+        console.log(this.disc.dissid)
+        getSongList(this.disc.dissid).then((res) => {
           if (res.code === ERR_OK) {
-            this.songs = this._normalizeSongs(res.songlist)
+            console.log(res.cdlist[0].songlist)
+            //this.songs = this._normalizeSongs(res.cdlist[0].songlist)
           }
         })
       },
       _normalizeSongs(list) {
         let ret = []
-        list.forEach((item) => {
-          const musicData = item.data
+        list.forEach((musicData) => {
           if (musicData.songid && musicData.albummid) {
             ret.push(createSong(musicData))
           }
@@ -66,7 +63,7 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .slide-enter-active, .slide-leave-active
-    transition: all 0.3s ease
+    transition: all 0.3s
 
   .slide-enter, .slide-leave-to
     transform: translate3d(100%, 0, 0)

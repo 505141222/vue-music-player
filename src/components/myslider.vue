@@ -10,7 +10,7 @@
   import {addClass} from 'common/js/dom'
   import BScroll from 'better-scroll'
   import {mapGetters} from 'vuex'
-  import {eventBus} from '../../../eventBus.js'
+  import {eventBus} from '../eventBus.js'
 
   export default {
     name: 'slider',

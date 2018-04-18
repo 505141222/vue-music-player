@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import Scorll from '../../../../base/scroll/scroll.vue'
+import Scorll from 'base/scroll/scroll.vue'
 import SongList from 'base/song-list/song-list'
 import {prefixStyle} from 'common/js/dom'
-import Loading from '../../../../base/loading/loading.vue'
+import Loading from 'base/loading/loading.vue'
 import {mapActions} from 'vuex'
-import {playlistMixin} from '../../../../common/js/mixin.js'
-import {eventBus} from '../../../../eventBus.js'
+import {playlistMixin} from 'common/js/mixin.js'
+import {eventBus} from '../eventBus.js'
 
 const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')

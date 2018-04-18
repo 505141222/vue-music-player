@@ -11,7 +11,7 @@ const mutations = {
     state.fullScreen = flag
   },
   [types.SET_PLAYLIST](state, list) {
-    state.playlist = list
+    state.playList = list
   },
   [types.SET_SEQUENCE_LIST](state, list) {
     state.sequenceList = list
@@ -28,11 +28,11 @@ const mutations = {
   [types.SET_TOP_LIST](state, topList) {
     state.topList = topList
   },
-  [types.SET_SEARCH_HISTORY](state, history) {
-    state.searchHistory = history
+  [types.SET_SEARCH_HISTORY](state, searchHistory) {
+    state.searchHistory = searchHistory
   },
-  [types.SET_PLAY_HISTORY](state, history) {
-    state.playHistory = history
+  [types.SET_PLAY_HISTORY](state, playHistory) {
+    state.playHistory = playHistory
   },
   [types.SET_FAVORITE_LIST](state, list) {
     state.favoriteList = list

@@ -36,13 +36,13 @@
 
 <script type="text/ecmascript-6">
   import SearchBox from 'base/search-box/search-box'
-  import {getHotKey} from '../../api/search.js'
-  import {ERR_OK} from '../../api/config.js'
-  import SearchSuggert from './serach-suggest/search-suggest.vue'
+  import {getHotKey} from 'api/search.js'
+  import {ERR_OK} from 'api/config.js'
+  import SearchSuggert from '../components/search-suggest.vue'
   import {mapActions} from 'vuex'
-  import SearchList from '../../base/search-list/search-list.vue'
-  import Confirm from '../../base/confirm/confirm.vue'
-  import Scroll from '../../base/scroll/scroll.vue'
+  import SearchList from 'base/search-list/search-list.vue'
+  import Confirm from 'base/confirm/confirm.vue'
+  import Scroll from 'base/scroll/scroll.vue'
   import {playlistMixin,searchMixin} from 'common/js/mixin'
 
   export default {

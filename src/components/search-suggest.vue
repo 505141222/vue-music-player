@@ -18,14 +18,14 @@
 </template>
 
 <script type="text/ecmascript-6">
-import {search} from '../../../api/search.js'
-import {ERR_OK} from '../../../api/config.js'
+import {search} from 'api/search.js'
+import {ERR_OK} from 'api/config.js'
 import {createSong} from 'common/js/song'
-import Scroll from '../../../base/scroll/scroll.vue'
-import Loading from '../../../base/loading/loading.vue'
-import Singer from '../../../common/js/singer.js'
+import Scroll from 'base/scroll/scroll.vue'
+import Loading from 'base/loading/loading.vue'
+import Singer from 'common/js/singer.js'
 import {mapMutations,mapActions} from 'vuex'
-import NoResult from '../../../base/no-result/no-result.vue'
+import NoResult from 'base/no-result/no-result.vue'
 
 const perpage = 20
 const TYPE_SINGER = 'singer'

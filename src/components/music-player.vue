@@ -105,15 +105,15 @@
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import animations from 'create-keyframe-animation'
 import {prefixStyle} from 'common/js/dom'
-import ProgressBar from '../../base/progress-bar/progress-bar.vue'
-import ProgressCircle from '../../base/progress-circle/progress-circle.vue'
+import ProgressBar from 'base/progress-bar/progress-bar.vue'
+import ProgressCircle from 'base/progress-circle/progress-circle.vue'
 import {playMode} from 'common/js/config'
-import {getLyric} from '..//../api/song.js'
+import {getLyric} from 'api/song.js'
 import Lyric from 'lyric-parser'
-import Scroll from '../../base/scroll/scroll.vue'
-import slider from '../../components/rank/slider/slider.vue'
-import Playlist from './playlist/playlist.vue'
-import {playerMixin} from '../../common/js/mixin.js'
+import Scroll from 'base/scroll/scroll.vue'
+import slider from './myslider.vue'
+import Playlist from './playlist.vue'
+import {playerMixin} from 'common/js/mixin.js'
 
 
 const transform = prefixStyle('transform')

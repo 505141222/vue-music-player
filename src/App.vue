@@ -11,8 +11,8 @@
 
 <script>
 import MyHeader from 'components/m-header/myHeader.vue'
-import Tab from 'components/tab/tab.vue'
-import MusicPlayer from './components/music-player/music-player.vue'
+import Tab from 'components/tab.vue'
+import MusicPlayer from './components/music-player.vue'
 export default {
   name: 'App',
   components: {

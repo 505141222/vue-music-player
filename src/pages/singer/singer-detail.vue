@@ -6,10 +6,10 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import {getSingerDetail} from '../../../api/singer.js'
-import {ERR_OK} from '../../../api/config.js'
+import {getSingerDetail} from 'api/singer.js'
+import {ERR_OK} from 'api/config.js'
 import {createSong} from 'common/js/song'
-import MusicList from './musiclist/musiclist.vue'
+import MusicList from '../../components/musiclist.vue'
 export default {
   computed: {
     ...mapGetters([

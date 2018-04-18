@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import IndexPage from '../App.vue'
-import Recommend from '../components/recommend/recommend.vue'
-import Rank from '../components/rank/rank.vue'
-import Search from '../components/search/search.vue'
-import Singer from '../components/singer/singer.vue'
-import SingerDetail from '../components/singer/singer-detail/singer-detail.vue'
-import Disc from '../components/recommend/disc/disc.vue'
-import TopList from '../components/rank/top-list/top-list.vue'
-import UserCenter from '../components/user-center/user-center.vue'
+import Recommend from '../pages/recommend.vue'
+import Rank from '../pages/rank.vue'
+import Search from '../pages/search.vue'
+import Singer from '../pages/singer.vue'
+import SingerDetail from '../pages/singer/singer-detail.vue'
+import Disc from '../pages/recommend/disc.vue'
+import TopList from '../pages/rank/top-list.vue'
+import UserCenter from '../pages/user-center.vue'
 
 Vue.use(Router)
 
